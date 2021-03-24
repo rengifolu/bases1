@@ -9,14 +9,14 @@ import {Personaje} from '../interface/dbz.interface'
 })
 export class AgregarComponent implements OnInit {
 
-  @Input() personajes: Personaje[]=[];
+  // @Input() personajes: Personaje[]=[];
 
   @Input() nuevo: Personaje = {
     nombre: '',
     poder: 0
   }
 
-  @Output() onNuevopersonaje: EventEmitter = new EventEmitter();
+  @Output() onNuevopersonaje: EventEmitter<Personaje>  = new EventEmitter();
   
   constructor() { }
 
@@ -26,17 +26,17 @@ export class AgregarComponent implements OnInit {
 
   agregar(){
     if (this.nuevo.nombre.trim().length === 0) {
+      console.log('no ingresaste nada en el campo')
       return 
     }
 
     console.log(this.nuevo);
-
-    this.personajes.push(this.nuevo);
+    this.onNuevopersonaje.emit(this.nuevo);
     this.nuevo = {
       nombre: '',
       poder: 0
     }
 
-    console.log(this.personajes);
+    // console.log(this.personajes);
   }
 }

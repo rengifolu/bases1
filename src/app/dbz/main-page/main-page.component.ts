@@ -22,8 +22,8 @@ personajes: Personaje[] = [
 
 
  nuevo: Personaje = {
-  nombre: '',
-  poder: 0
+  nombre: 'Maestro Roshi',
+  poder: 1000
 }
 
   constructor() { }
@@ -31,6 +31,10 @@ personajes: Personaje[] = [
   ngOnInit(): void {
   }
 
-
+  agregarNuevoPersonaje(argumento: Personaje){
+    // debugger
+    this.personajes.push(argumento);
+    console.log(this.personajes)
+  }
 
 }
